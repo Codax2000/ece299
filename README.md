@@ -1,2 +1,3 @@
-# ee299
+# EE 299
 This is the repository for the storage, development, and testing of the code for EE 299 at the UW.
+Currently, there are
