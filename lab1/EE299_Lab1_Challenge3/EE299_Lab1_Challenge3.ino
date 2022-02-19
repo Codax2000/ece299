@@ -29,6 +29,7 @@
 // amount the active color should increment by
 #define INCREMENT 25
 #define CYCLE_INCREMENT 2
+
 // button codes when received by the IR remote.
 // easy to read using an IRremote example
 #define ON 0xFFA25D
@@ -41,12 +42,14 @@
 #define BLUE 0xFF7A85
 #define CIRCLE 0xFF02FD
 
+// values for the IR receiver
 IRrecv irrecv(RECV_PIN);
 decode_results results;
 
 // color levels that should be written to the RGB LED.
 // standard color channel order: red, green, blue
 // begin with red on at half power
+// the active color denotes which value will be incremented when up/down/left/right is pressed
 int colors[3] = {127, 0, 0};
 int activeColor = 0;
 
@@ -65,7 +68,7 @@ void setup() {
 
 void loop()
 {
-    if (irrecv.decode(&results)) { // if there is a result available
+    if (irrecv.decode(&results)) { // if there is a result available, interpret it
         interpretResults();
     }
     delay(100);
